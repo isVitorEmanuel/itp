@@ -6,6 +6,7 @@ Entrada:
 
 6 4
 ```
+
 ```
 Saída: 
 Resultado: 2
