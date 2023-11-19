@@ -23,7 +23,7 @@
         <li>Sinta-se à vontade! :)</li>
       </ol>
     <h2>Importante!</h2>
-      <p>A disciplina foi dividida em 3 unidades, onde cada uma tem seu diretório. Na 1ª e 2ª unidade foram feitas provas e listas como avaliação. A 3ª unidade foi um projeto, cria um _____<\p>
+      <p>A disciplina foi dividida em 3 unidades, onde cada uma tem seu diretório. Na 1ª e 2ª unidade foram feitas provas e listas como avaliação. A 3ª unidade foi um projeto, criar um (?)<\p>
       <ul>
         <li>1ª Unidade - <i>01-unidade</i></li>
         <li>2ª Unidade - <i>02-unidade</i></li>
