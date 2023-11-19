@@ -25,9 +25,9 @@
     <h2>Importante!</h2>
       <p>A disciplina foi dividida em 3 unidades, onde cada uma tem seu diretório. Na 1ª e 2ª unidade foram feitas provas e listas como avaliação. A 3ª unidade foi um projeto, cria um _____<\p>
       <ul>
-        <li>1ª Unidade - ```01-unidade```</li>
-        <li>2ª Unidade - ```02-unidade```</li>
-        <li>3ª Unidade - ```03-unidade```</li>
+        <li>1ª Unidade - <i>01-unidade</i></li>
+        <li>2ª Unidade - <i>02-unidade</i></li>
+        <li>3ª Unidade - <i>03-unidade</i></li>
       </ul>
   </body>
 </html>
