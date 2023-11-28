@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -5,7 +6,7 @@
 #define MAX_NAME 50
 /* Definição de um tipo enumerado para ser os possíveis tipos das células e
  colunas. - OK */
-typedef enum { CHAR, STRING, INT, FLOAT } Types;
+typedef enum { CHAR, STRING, INT, FLOAT, DOUBLE } Types;
 
 // Definição da estrutura da célula - OK
 typedef struct {
@@ -98,7 +99,66 @@ void listarTabelas(Tabela *tabelas, int numTab) {
 }
 
 void adicionarLinha(Tabela *tabela) {
-  tabela->numLinhas = tabela->numLinhas + 1;
+
+  int chavePrimaria;
+  bool chaveRepetida = false;
+
+  printf("Digite o valor da chave primária (inteiro): ");
+  scanf("%d", &chavePrimaria);
+
+  for (int i = 0; i < tabela->numLinhas; i++) {
+    if (tabela->dados[i][0].dataInt == chavePrimaria) {
+      chaveRepetida = true;
+    }
+  }
+
+  if (chaveRepetida) {
+    printf("Chave primária repetida!\n");
+  } else {
+    tabela->numLinhas++;
+
+    if (tabela->numLinhas == 1) {
+      tabela->dados = malloc(tabela->numLinhas * sizeof(Celula *));
+    } else {
+      tabela->dados =
+          realloc(tabela->dados, tabela->numLinhas * sizeof(Celula *));
+    }
+
+    for (int i = tabela->numLinhas - 1; i < tabela->numLinhas; ++i) {
+      tabela->dados[i] = malloc(tabela->numColunas * sizeof(Celula));
+    }
+
+    tabela->dados[tabela->numLinhas - 1][0].dataInt = chavePrimaria;
+
+    for (int i = 1; i < tabela->numColunas; i++) {
+      printf("Digite o valor para a coluna %s: ",
+             tabela->colunas[i].nomeColuna);
+
+      switch (tabela->colunas[i].tipoColuna) {
+      case CHAR:
+        scanf(" %c", &tabela->dados[tabela->numLinhas - 1][i].dataChar);
+        break;
+      case STRING:
+        tabela->dados[tabela->numLinhas - 1][i].dataString =
+            malloc(MAX_NAME * sizeof(char));
+        printf("(max %d caracteres) ", MAX_NAME - 1);
+        scanf("%s", tabela->dados[tabela->numLinhas - 1][i].dataString);
+        break;
+      case INT:
+        scanf("%d", &tabela->dados[tabela->numLinhas - 1][i].dataInt);
+        break;
+      case FLOAT:
+        scanf("%f", &tabela->dados[tabela->numLinhas - 1][i].dataFloat);
+        break;
+      case DOUBLE:
+        scanf("%lf", &tabela->dados[tabela->numLinhas - 1][i].dataDouble);
+        break;
+      default:
+        // Tratamento para tipos desconhecidos
+        break;
+      }
+    }
+  }
 }
 void listarDadosTabela() {}
 
@@ -110,6 +170,9 @@ void apagarTabela() {}
 
 int main() {
 
+  char nomeTabela[MAX_NAME];
+  int idTab = 0;
+  bool tabelaExiste = false;
   int numTab = 0;
   int opcao;
   // Cria um vetor que guardará todas as tabelas;
@@ -129,12 +192,31 @@ int main() {
     case 2:
       listarTabelas(tabelas, numTab);
       break;
+    case 3:
+
+      printf("Digite o nome da tabela: ");
+      scanf("%s", nomeTabela);
+
+      for (idTab = 0; idTab < numTab; idTab++) {
+        if (strcmp(tabelas[idTab].nomeTabela, nomeTabela) == 0) {
+          tabelaExiste = true;
+          break;
+        }
+      }
+
+      if (tabelaExiste == false) {
+        printf("TABELA NÃO ENCONTRADA\n");
+      } else {
+        printf("TABELA ENCONTRADA - %d\n", idTab);
+
+        adicionarLinha(&tabelas[idTab]);
+      }
     }
 
   } while (opcao != 0);
 
-  printf("%s\n", tabelas[0].chavePrimaria.nomeColuna);
-  printf("%d\n", tabelas[0].chavePrimaria.tipoColuna);
+  printf("%d\n", tabelas[0].dados[0][0].dataInt);
+  printf("%s\n", tabelas[0].dados[0][1].dataString);
 
   // Tabela tabela_teste = criarTabela();
 
