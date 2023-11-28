@@ -3,7 +3,8 @@
 #include <string.h>
 
 #define MAX_NAME 50
-/* Definição de um tipo enumerado para ser os possíveis tipos das células e colunas. - OK */
+/* Definição de um tipo enumerado para ser os possíveis tipos das células e
+ colunas. - OK */
 typedef enum { CHAR, STRING, INT, FLOAT } Types;
 
 // Definição da estrutura da célula - OK
@@ -82,7 +83,11 @@ Tabela criarTabela() {
 }
 // Funcão que adiciona tabelas em um vetor - OK
 Tabela *inserirTabela(Tabela *tabelas, int *numTab, Tabela novaTabela) {
+  (*numTab)++;
+  tabelas = realloc(tabelas, sizeof(Tabela) * (*numTab));
 
+  tabelas[*numTab - 1] = novaTabela;
+  return tabelas;
 }
 // Função que lista as tabelas disponíveis - OK
 void listarTabelas(Tabela *tabelas, int numTab) {
