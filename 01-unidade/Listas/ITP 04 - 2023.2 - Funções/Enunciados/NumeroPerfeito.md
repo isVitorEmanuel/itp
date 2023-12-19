@@ -23,6 +23,7 @@ Saída:
 6 eh perfeito
 5 nao eh perfeito
 28 eh perfeito
+
 5 nao eh perfeito
 10 nao eh perfeito
 4 nao eh perfeito

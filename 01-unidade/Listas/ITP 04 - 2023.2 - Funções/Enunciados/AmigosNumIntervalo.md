@@ -4,6 +4,7 @@ Definição: dois números naturais diferentes são amigos se cada um for igual 
 
 Assim, você forneceu o trecho de código abaixo e pediu para ele implementar as funções e depois criar um programa que recebe dois intervalos naturais L1 = [A,B] e L2 = [C,D] e apresenta todos os valores em L1 que possuem ao menos um amigo em L2.
 
+```
 #include
 
 // retorna verdadeiro se numero é divisível por divisor e falso em caso contrário
@@ -26,6 +27,7 @@ int testa_amigos(int a, int b){
 int main(){
   return 0;
 }
+```
 
 Para mais informações sobre números amigos, consulte o endereço: wikipedia.
 
