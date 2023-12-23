@@ -115,6 +115,26 @@ int main() {
         salvarQuantidade(numTab);
       }
       break;
+    case 6:
+      printf("----------------------------------------------\n");
+      printf("Digite o nome da tabela: ");
+      scanf("%s", nomeTabela);
+      for (idTab = 0; idTab < numTab; idTab++) {
+        if (strcmp(tabelas[idTab].nomeTabela, nomeTabela) == 0) {
+          tabelaExiste = true;
+          break;
+        }
+      }
+
+      if (tabelaExiste == false) {
+        printf("Tabela nao encontrada!\n");
+      } else {
+        int chavePrimaria;
+        printf("Digite o valor da chave primaria a ser apagada: ");
+        scanf("%d", &chavePrimaria);
+        deletarLinha(nomeTabela, tabelas, numTab, chavePrimaria);
+      }
+      break;
     }
 
   } while (opcao != 0);
