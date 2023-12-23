@@ -235,3 +235,38 @@ void listarDadosTabela(Tabela tabela) {
   }
 }
 
+Tabela *apagarTabela(Tabela *tabelas, int *numTab, char *nomeTabela) {
+
+  Tabela tabelaRetornada;
+  int tabelaEncontrada = -1;
+  char nomeArquivo[MAX_NAME];
+
+  sprintf(nomeArquivo, "tabelas/%s.txt", nomeTabela);
+
+  if (remove(nomeArquivo) == 0) {
+    printf("Arquivo %s excluido com sucesso.\n", nomeArquivo);
+    for (int i = 0; i < *numTab; i++) {
+      if (strcmp(tabelas[i].nomeTabela, nomeTabela) == 0) {
+        tabelaEncontrada = i;
+        tabelaRetornada = tabelas[i];
+        break;
+      }
+    }
+
+    if (tabelaEncontrada != -1) {
+      for (int i = tabelaEncontrada; i < *numTab - 1; i++) {
+        tabelas[i] = tabelas[i + 1];
+      }
+      (*numTab)--;
+      printf("Tabela excluida: %s\n", nomeTabela);
+      Tabela *result = calloc(*numTab, sizeof(Tabela));
+      for (int j = 0; j < *numTab; j++) {
+        result[j] = tabelas[j];
+      }
+      return result;
+    } else {
+      printf("Erro ao excluir o arquivo %s\n", nomeArquivo);
+      return tabelas;
+    }
+  }
+}
