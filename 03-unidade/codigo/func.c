@@ -14,19 +14,20 @@ Tabela criarTabela() {
 
   Tabela tabela;
 
+  printf("----------------------------------------------\n");
   printf("Digite o nome da tabela: ");
   scanf("%s", nomeTabela);
   strcpy(tabela.nomeTabela, nomeTabela);
 
   do {
-
+    
     printf("Digite o numero de colunas: ");
     scanf("%d", &tabela.numColunas);
 
     if (tabela.numColunas <= 0) {
       printf("ERRO\n");
     } else {
-      // Aloca espaço para o vetor colunas
+ 
       tabela.colunas = calloc(tabela.numColunas, sizeof(Coluna));
 
       printf("Digite o nome da primaria: ");
@@ -47,11 +48,12 @@ Tabela criarTabela() {
                i + 1);
 
         scanf("%d", &tabela.colunas[i].tipoColuna);
+
+        printf("Tabela criada com sucesso!\n");
       }
     }
   } while (tabela.numColunas <= 0);
 
-  system("clear");
   tabela.numLinhas = 0;
 
   return tabela;
@@ -132,6 +134,8 @@ void *carregarTabelas(Tabela *tabelas, int *numTabs) {
 
 void listarTabelas(Tabela *tabelas, int numTab) {
 
+  printf("----------------------------------------------\n");
+  printf("NUMERO DE TABELAS: %d\n", &numTab);
   for (int i = 0; i < numTab; i++) {
     printf("%d - %s\n", (i + 1), tabelas[i].nomeTabela);
   }

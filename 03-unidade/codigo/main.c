@@ -47,7 +47,7 @@ int main() {
       printf("\nFinalizando o programa!\n\n");
       break;
     case 1:
-      /*
+      
       tabelas = inserirTabela(tabelas, &numTab, criarTabela());
 
       if ((tabelas->numColunas) > 1) {
@@ -56,9 +56,7 @@ int main() {
         salvarQuantidade(numTab);
       }
       break;
-      */
     case 2:
-      printf("NUMERO DE TABELAS: %d\n", numTab);
       listarTabelas(tabelas, numTab);
       break;
     }
