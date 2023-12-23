@@ -14,7 +14,7 @@ Dividimos o desenvolvimento durante 3 semanas (Conseguimos concluir o desenvolvi
 * Implementação da função de `salvarTabela()` - [Vitor E.]
 * Implementação da função de `salvarNome()` - [Vitor E.]
 * Implementação da função de `salvarQuantidade()` - [Vitor E.]
-  ### Semana 02 - 04/12/2023 - 08/12/2023
+### Semana 02 - 04/12/2023 - 08/12/2023
 * Implementação da funçõe de `carregarTabelas()` - [Vitor E.]
 * Implementação da função de `carregarQuantidade()` - [Vitor E.]
 * Implementação da função de `apagarTabela()` - [Vitor E. e João L.]
