@@ -13,7 +13,7 @@ ITP é uma disciplina de introdução à programação com a linguagem C. Nela a
 3. Crie o `.exec` do código desejado.
 4. Sinta-se à vontade! :)
 ## Importante!
-A disciplina foi dividida em 3 unidades, onde cada uma tem seu diretório. Na 1ª e 2ª unidade foram feitas provas e listas como avaliação. A 3ª unidade foi um projeto, criar um (?).
+A disciplina foi dividida em 3 unidades, onde cada uma tem seu diretório. Na 1ª e 2ª unidade foram feitas provas e listas como avaliação. A 3ª unidade foi um projeto, criar um Banco de Dados.
 * 1ª Unidade - `01-unidade`
 * 2ª Unidade - `02-unidade`
 * 3ª Unidade - `03-unidade`
