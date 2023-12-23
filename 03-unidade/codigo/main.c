@@ -135,7 +135,89 @@ int main() {
         deletarLinha(nomeTabela, tabelas, numTab, chavePrimaria);
       }
       break;
-    }
+    case 7: {
+      int tipo;
+      char nomeTabela[MAX_NAME];
 
+      printf("Digite o nome da tabela: ");
+      scanf("%s", nomeTabela);
+      bool tabelaEncontrada = false;
+      int tabelaIndex = -1;
+
+      for (int i = 0; i < numTab; i++) {
+        if (strcmp(tabelas[i].nomeTabela, nomeTabela) == 0) {
+          tabelaEncontrada = true;
+          tabelaIndex = i;
+          break;
+        }
+      }
+
+      if (!tabelaEncontrada) {
+        printf("Tabela nao encontrada!\n");
+        break;
+      }
+
+      printf("Colunas disponiveis na tabela %s:\n", nomeTabela);
+      for (int i = 0; i < tabelas[tabelaIndex].numColunas; i++) {
+        printf(".%s\n", tabelas[tabelaIndex].colunas[i].nomeColuna);
+      }
+
+      char nomeColuna[MAX_NAME];
+      printf("Digite o nome da coluna: ");
+      scanf("%s", nomeColuna);
+      int colunaIndex = -1;
+
+      for (int i = 0; i < tabelas[tabelaIndex].numColunas; i++) {
+        if (strcmp(tabelas[tabelaIndex].colunas[i].nomeColuna, nomeColuna) == 0) {
+          colunaIndex = i;
+          break;
+        }
+      }
+      if (colunaIndex == -1) {
+        printf("Coluna nao encontrada!\n");
+        break;
+      }
+
+      Types tipoColunaSelecionada =
+          tabelas[tabelaIndex].colunas[colunaIndex].tipoColuna;
+      Celula novoValor;
+
+      switch (tipoColunaSelecionada) {
+        case CHAR:
+          tipo = 0;
+          printf("Digite o valor desejado (char): ");
+          scanf(" %c", &novoValor.dataChar);
+          break;
+        case STRING:
+          tipo = 1;
+          printf("Digite o valor desejado (string): ");
+          novoValor.dataString = malloc(MAX_NAME * sizeof(char));
+          scanf("%s", novoValor.dataString);
+          break;
+        case INT:
+          tipo = 2;
+          printf("Digite o valor desejado (int): ");
+          scanf("%d", &novoValor.dataInt);
+          break;
+        case FLOAT:
+          tipo = 3;
+          printf("Digite o valor desejado (float): ");
+          scanf("%f", &novoValor.dataFloat);
+          break;
+        case DOUBLE:
+          tipo = 4;
+          printf("Digite o valor desejado (double): ");
+          scanf("%lf", &novoValor.dataDouble);
+          break;
+        default:
+          printf("Tipo de coluna nao suportado!\n");
+          break;
+      }
+      sValues(tabelas[tabelaIndex], nomeColuna, novoValor, tipo);
+      break;
+    }
+    default:
+    printf("ERRO - Opcão Inválida!\n");
+   }
   } while (opcao != 0);
 }

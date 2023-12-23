@@ -219,3 +219,46 @@ void deletarLinha(char *nomeTabela, Tabela *tabelas, int numTabs, int chavePrima
   }
   printf("Linha deletada!\n");
 }
+
+void sValues(Tabela tabela, char *nomeColuna, Celula valor, int type) {
+  int escolha;
+
+  printf("Escolha uma das opcoes:\n");
+  printf("1 - Valores maiores que o valor informado\n");
+  printf("2 - Valores maiores ou iguais ao valor informado\n");
+  printf("3 - Valores iguais ao valor informado\n");
+  printf("4 - Valores menores que o valor informado\n");
+  printf("5 - Valores menores ou iguais ao valor informado\n");
+  printf("6 - Valores proximos ao valor informado\n");
+  printf("Digite a opcao desejada: ");
+  scanf("%d", &escolha);
+
+  switch (escolha) {
+  case 1:
+    buscarValoresMaiores(tabela, nomeColuna, type, valor);
+    break;
+  case 2:
+    buscarValoresMaioresOuIguais(tabela, nomeColuna, type, valor);
+    break;
+  case 3:
+    buscarValoresIguais(tabela, nomeColuna, type, valor);
+    break;
+  case 4:
+    buscarValoresMenores(tabela, nomeColuna, type, valor);
+    break;
+  case 5:
+    buscarValoresMenoresOuIguais(tabela, nomeColuna, type, valor);
+    break;
+  case 6:
+    if (type != STRING) {
+      printf("Erro!!\nApenas strings são toleradas aqui!!!\n");
+    } else {
+      buscarValoresParecidos(tabela, nomeColuna, valor.dataString);
+    }
+
+    break;
+  default:
+    printf("ERRO - Opcao Invalida!\n");
+  }
+  return;
+}

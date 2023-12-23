@@ -169,27 +169,298 @@ void salvarTabela(Tabela tabela) {
   }
 }
 
-
-// Função que apaga uma linha de uma tabela OK
-void apagarLinha(char *nomeTabela, Tabela *tabelas, int numTabs,
-                 int chavePrimaria) {
-
-  for (int i = 0; i < numTabs; i++) {
-    if (strcmp(tabelas[i].nomeTabela, nomeTabela) == 0) {
-      for (int j = 0; j < tabelas[i].numLinhas; j++) {
-        if (tabelas[i].dados[j][0].dataInt == chavePrimaria) {
-          free(tabelas[i].dados[j]); // Liberar memória alocada para a linha
-          for (int k = j; k < tabelas[i].numLinhas - 1;
-               k++) { // Deslocar as outras linhas
-            tabelas[i].dados[k] = tabelas[i].dados[k + 1];
-          }
-          tabelas[i].numLinhas--; // Atualizar o número de linhas
-          tabelas[i].dados = realloc(tabelas[i].dados, tabelas[i].numLinhas * sizeof(Celula *));
-        }
-      }
-      salvarTabela(tabelas[i]); 
+void printRow(Tabela tabela, int rowNum) {
+  for (int j = 0; j < tabela.numColunas; j++) {
+    switch (tabela.colunas[j].tipoColuna) {
+    case CHAR:
+      printf("| %c ", tabela.dados[rowNum][j].dataChar);
+      break;
+    case STRING:
+      printf("| %s ", tabela.dados[rowNum][j].dataString);
+      break;
+    case INT:
+      printf("| %d ", tabela.dados[rowNum][j].dataInt);
+      break;
+    case FLOAT:
+      printf("| %f ", tabela.dados[rowNum][j].dataFloat);
+      break;
+    case DOUBLE:
+      printf("| %lf ", tabela.dados[rowNum][j].dataDouble);
+      break;
+    default:
       break;
     }
   }
-  printf("Linha deletada!");
+  printf("\n");
+}
+
+void buscarValoresMaiores(Tabela tabela, char *nomeColuna, int type,
+                          Celula valor) {
+  for (int i = 0; i < tabela.numLinhas; i++) {
+    for (int j = 0; j < tabela.numColunas; j++) {
+      if (strcmp(tabela.colunas[j].nomeColuna, nomeColuna) == 0) {
+        switch (type) {
+        case CHAR:
+          if (tabela.dados[i][j].dataChar > valor.dataChar) {
+            printRow(tabela, i);
+          }
+          break;
+        case STRING:
+          if (strlen(tabela.dados[i][j].dataString) >
+              strlen(valor.dataString)) {
+            printRow(tabela, i);
+          }
+          break;
+        case INT:
+          if (tabela.dados[i][j].dataInt > valor.dataInt) {
+            printRow(tabela, i);
+          }
+          break;
+        case FLOAT:
+          if (tabela.dados[i][j].dataFloat > valor.dataFloat) {
+            printRow(tabela, i);
+          }
+          break;
+        case DOUBLE:
+          if (tabela.dados[i][j].dataDouble > valor.dataDouble) {
+            printRow(tabela, i);
+          }
+          break;
+        default:
+          break;
+        }
+      }
+    }
+  }
+}
+
+void buscarValoresMaioresOuIguais(Tabela tabela, char *nomeColuna, int type,
+                                  Celula valor) {
+  for (int i = 0; i < tabela.numLinhas; i++) {
+    for (int j = 0; j < tabela.numColunas; j++) {
+      if (strcmp(tabela.colunas[j].nomeColuna, nomeColuna) == 0) {
+        switch (type) {
+        case CHAR:
+          if (tabela.dados[i][j].dataChar >= valor.dataChar) {
+            printRow(tabela, i);
+          }
+          break;
+        case STRING:
+          if (strlen(tabela.dados[i][j].dataString) >=
+              strlen(valor.dataString)) {
+            printRow(tabela, i);
+          }
+          break;
+        case INT:
+          if (tabela.dados[i][j].dataInt >= valor.dataInt) {
+            printRow(tabela, i);
+          }
+          break;
+        case FLOAT:
+          if (tabela.dados[i][j].dataFloat >= valor.dataFloat) {
+            printRow(tabela, i);
+          }
+          break;
+        case DOUBLE:
+          if (tabela.dados[i][j].dataDouble >= valor.dataDouble) {
+            printRow(tabela, i);
+          }
+          break;
+        default:
+          break;
+        }
+      }
+    }
+  }
+}
+
+void buscarValoresIguais(Tabela tabela, char *nomeColuna, int type,
+                         Celula valor) {
+  for (int i = 0; i < tabela.numLinhas; i++) {
+    for (int j = 0; j < tabela.numColunas; j++) {
+      if (strcmp(tabela.colunas[j].nomeColuna, nomeColuna) == 0) {
+        switch (type) {
+        case CHAR:
+          if (tabela.dados[i][j].dataChar == valor.dataChar) {
+            printRow(tabela, i);
+          }
+          break;
+        case STRING:
+          if (strcmp(tabela.dados[i][j].dataString, valor.dataString) == 0) {
+            printRow(tabela, i);
+          }
+          break;
+        case INT:
+          if (tabela.dados[i][j].dataInt == valor.dataInt) {
+            printRow(tabela, i);
+          }
+          break;
+        case FLOAT:
+          if (tabela.dados[i][j].dataFloat == valor.dataFloat) {
+            printRow(tabela, i);
+          }
+          break;
+        case DOUBLE:
+          if (tabela.dados[i][j].dataDouble == valor.dataDouble) {
+            printRow(tabela, i);
+          }
+          break;
+        default:
+          break;
+        }
+      }
+    }
+  }
+}
+
+void buscarValoresMenores(Tabela tabela, char *nomeColuna, int type,
+                          Celula valor) {
+  for (int i = 0; i < tabela.numLinhas; i++) {
+    for (int j = 0; j < tabela.numColunas; j++) {
+      if (strcmp(tabela.colunas[j].nomeColuna, nomeColuna) == 0) {
+        switch (type) {
+        case CHAR:
+          if (tabela.dados[i][j].dataChar < valor.dataChar) {
+            printRow(tabela, i);
+          }
+          break;
+        case STRING:
+          if (strlen(tabela.dados[i][j].dataString) <
+              strlen(valor.dataString)) {
+            printRow(tabela, i);
+          }
+          break;
+        case INT:
+          if (tabela.dados[i][j].dataInt < valor.dataInt) {
+            printRow(tabela, i);
+          }
+          break;
+        case FLOAT:
+          if (tabela.dados[i][j].dataFloat < valor.dataFloat) {
+            printRow(tabela, i);
+          }
+          break;
+        case DOUBLE:
+          if (tabela.dados[i][j].dataDouble < valor.dataDouble) {
+            printRow(tabela, i);
+          }
+          break;
+        default:
+          break;
+        }
+      }
+    }
+  }
+}
+
+void buscarValoresMenoresOuIguais(Tabela tabela, char *nomeColuna, int type,
+                                  Celula valor) {
+  for (int i = 0; i < tabela.numLinhas; i++) {
+    for (int j = 0; j < tabela.numColunas; j++) {
+      if (strcmp(tabela.colunas[j].nomeColuna, nomeColuna) == 0) {
+        switch (type) {
+        case CHAR:
+          if (tabela.dados[i][j].dataChar <= valor.dataChar) {
+            printRow(tabela, i);
+          }
+          break;
+        case STRING:
+          if (strlen(tabela.dados[i][j].dataString) <=
+              strlen(valor.dataString)) {
+            printRow(tabela, i);
+          }
+          break;
+        case INT:
+          if (tabela.dados[i][j].dataInt <= valor.dataInt) {
+            printRow(tabela, i);
+          }
+          break;
+        case FLOAT:
+          if (tabela.dados[i][j].dataFloat <= valor.dataFloat) {
+            printRow(tabela, i);
+          }
+          break;
+        case DOUBLE:
+          if (tabela.dados[i][j].dataDouble <= valor.dataDouble) {
+            printRow(tabela, i);
+          }
+          break;
+        default:
+          break;
+        }
+      }
+    }
+  }
+}
+
+int minimum(int a, int b, int c) {
+  int min = a;
+  if (b < min) {
+    min = b;
+  }
+  if (c < min) {
+    min = c;
+  }
+  return min;
+}
+
+int levenshteinDistance(char *str1, char *str2) {
+  int len1 = strlen(str1);
+  int len2 = strlen(str2);
+  int **dp = malloc((len1 + 1) * sizeof(int *));
+  for (int i = 0; i <= len1; i++) {
+    dp[i] = malloc((len2 + 1) * sizeof(int));
+  }
+  for (int i = 0; i <= len1; i++) {
+    for (int j = 0; j <= len2; j++) {
+      if (i == 0) {
+        dp[i][j] = j;
+      } else if (j == 0) {
+        dp[i][j] = i;
+      } else if (str1[i - 1] == str2[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1];
+      } else {
+        dp[i][j] = 1 + minimum(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);
+      }
+    }
+  }
+  int result = dp[len1][len2];
+  for (int i = 0; i <= len1; i++) {
+    free(dp[i]);
+  }
+  free(dp);
+
+  return result;
+}
+
+bool testaparecida(char *str1, char *str2) {
+  int dist = levenshteinDistance(str1, str2);
+  return dist <= 2; 
+}
+
+int encontrarNumeroDaColuna(Tabela tabela, char *nomeColuna) {
+  for (int i = 0; i < tabela.numColunas; i++) {
+    if (strcmp(tabela.colunas[i].nomeColuna, nomeColuna) == 0) {
+      return i;
+    }
+  }
+  return -1; 
+}
+
+void buscarValoresParecidos(Tabela tabela, char *nomeColuna, char *string) {
+  int coluna = encontrarNumeroDaColuna(tabela, nomeColuna);
+  if (coluna != -1) {
+    bool valorEncontrado = false;
+    for (int i = 0; i < tabela.numLinhas; i++) {
+      if (testaparecida(tabela.dados[i][coluna].dataString, string)) {
+        valorEncontrado = true;
+        printRow(tabela, i);
+      }
+    }
+    if (!valorEncontrado) {
+      printf("Nenhum valor foi encontrado\n");
+    }
+  } else {
+    printf("Nome da coluna não encontrado\n");
+  }
 }
