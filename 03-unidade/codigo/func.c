@@ -135,9 +135,71 @@ void *carregarTabelas(Tabela *tabelas, int *numTabs) {
 void listarTabelas(Tabela *tabelas, int numTab) {
 
   printf("----------------------------------------------\n");
-  printf("NUMERO DE TABELAS: %d\n", &numTab);
+  printf("NUMERO DE TABELAS: %d\n", numTab);
   for (int i = 0; i < numTab; i++) {
     printf("%d - %s\n", (i + 1), tabelas[i].nomeTabela);
+  }
+}
+
+void adicionarLinha(Tabela *tabela) {
+
+  int chavePrimaria;
+  bool chaveRepetida = false;
+
+  printf("Digite o valor da chave primaria (inteiro): ");
+  scanf("%d", &chavePrimaria);
+
+  for (int i = 0; i < tabela->numLinhas; i++) {
+    if (tabela->dados[i][0].dataInt == chavePrimaria) {
+      chaveRepetida = true;
+    }
+  }
+
+  if (chaveRepetida) {
+    printf("Chave primaria repetida!\n");
+  } else {
+    tabela->numLinhas++;
+
+    if (tabela->numLinhas == 1) {
+      tabela->dados = malloc(tabela->numLinhas * sizeof(Celula *));
+    } else {
+      tabela->dados =
+          realloc(tabela->dados, tabela->numLinhas * sizeof(Celula *));
+    }
+
+    for (int i = tabela->numLinhas - 1; i < tabela->numLinhas; ++i) {
+      tabela->dados[i] = malloc(tabela->numColunas * sizeof(Celula));
+    }
+
+    tabela->dados[tabela->numLinhas - 1][0].dataInt = chavePrimaria;
+
+    for (int i = 1; i < tabela->numColunas; i++) {
+      printf("Digite o valor para a coluna '%s': ",
+             tabela->colunas[i].nomeColuna);
+
+      switch (tabela->colunas[i].tipoColuna) {
+      case CHAR:
+        scanf(" %c", &tabela->dados[tabela->numLinhas - 1][i].dataChar);
+        break;
+      case STRING:
+        tabela->dados[tabela->numLinhas - 1][i].dataString =
+            malloc(MAX_NAME * sizeof(char));
+        scanf("%s", tabela->dados[tabela->numLinhas - 1][i].dataString);
+        break;
+      case INT:
+        scanf("%d", &tabela->dados[tabela->numLinhas - 1][i].dataInt);
+        break;
+      case FLOAT:
+        scanf("%f", &tabela->dados[tabela->numLinhas - 1][i].dataFloat);
+        break;
+      case DOUBLE:
+        scanf("%lf", &tabela->dados[tabela->numLinhas - 1][i].dataDouble);
+        break;
+      default:
+        break;
+      }
+    }
+    printf("Linha adicionada com sucesso!\n");
   }
 }
 

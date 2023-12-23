@@ -47,7 +47,6 @@ int main() {
       printf("\nFinalizando o programa!\n\n");
       break;
     case 1:
-      
       tabelas = inserirTabela(tabelas, &numTab, criarTabela());
 
       if ((tabelas->numColunas) > 1) {
@@ -58,6 +57,25 @@ int main() {
       break;
     case 2:
       listarTabelas(tabelas, numTab);
+      break;
+    case 3:
+      printf("----------------------------------------------\n");
+      printf("Digite o nome da tabela: ");
+      scanf("%s", nomeTabela);
+
+      for (idTab = 0; idTab < numTab; idTab++) {
+        if (strcmp(tabelas[idTab].nomeTabela, nomeTabela) == 0) {
+          tabelaExiste = true;
+          break;
+        }
+      }
+
+      if (tabelaExiste == false) {
+        printf("Tabela nao encontrada!\n");
+      } else {
+        adicionarLinha(&tabelas[idTab]);
+        salvarTabela(tabelas[idTab]);
+      }
       break;
     }
   } while (opcao != 0);
