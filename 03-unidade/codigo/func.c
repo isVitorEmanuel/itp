@@ -203,3 +203,35 @@ void adicionarLinha(Tabela *tabela) {
   }
 }
 
+void listarDadosTabela(Tabela tabela) {
+
+  printf("------ DADOS DA TABELA ------\n");
+
+  for (int i = 0; i < tabela.numLinhas; i++) {
+    for (int j = 0; j < tabela.numColunas; j++) {
+      switch (tabela.colunas[j].tipoColuna) {
+      case CHAR:
+        printf("| %c |", tabela.dados[i][j].dataChar);
+        break;
+      case STRING:
+        printf("| %s |", tabela.dados[i][j].dataString);
+        break;
+      case INT:
+        printf("| %i |", tabela.dados[i][j].dataInt);
+        break;
+      case FLOAT:
+        printf("| %f |", tabela.dados[i][j].dataFloat);
+        break;
+      case DOUBLE:
+        printf("| %lf |", tabela.dados[i][j].dataDouble);
+        break;
+      default:
+        // Tratamento para tipos desconhecidos
+        break;
+      }
+      printf(" ");
+    }
+    printf("\n");
+  }
+}
+

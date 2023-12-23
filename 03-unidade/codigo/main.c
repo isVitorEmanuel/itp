@@ -77,6 +77,25 @@ int main() {
         salvarTabela(tabelas[idTab]);
       }
       break;
-    }
+      
+      case 4:
+        printf("----------------------------------------------\n");
+        printf("Digite o nome da tabela: ");
+        scanf("%s", nomeTabela);
+
+        for (idTab = 0; idTab < numTab; idTab++) {
+          if (strcmp(tabelas[idTab].nomeTabela, nomeTabela) == 0) {
+            tabelaExiste = true;
+            break;
+          }
+        }
+
+        if (tabelaExiste == false) {
+          printf("Tabela nao encontrada!\n");
+        } else {
+          listarDadosTabela(tabelas[idTab]);
+        }
+        break;
+      }
   } while (opcao != 0);
 }
