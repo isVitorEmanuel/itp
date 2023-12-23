@@ -1,13 +1,11 @@
-O que a gente for fznd aqui no codigo, a gente vai atualizando.(É SÓ UM RASCUNHO
-DEPOIS A GENTE DOCUMENTA DIREITO)
-
-Primeiros rascunhos do código e ideias de como iniciar a criação da tabela.
-Definir como funcionará a tabela. 
-Implementado os tipos estruturados e enumerados e iniciação da função   
-para inicializar a tabela. 24 - 26/11
-
-Criar a função de listar tabelas e inserir tabelas num vetor 26 - 27/11
-
-Criar a função que adicionaLinhas 27 - 28/11
-
-
+# Sobre o projeto
+O projeto consistia em desenvolver um banco de dados não relacional na linguagem C, utilzando todos os conceitos e assuntos abordados durante a disciplina.
+## Dicentes
+* Vitor Emanuel Rodrigues de Alencar
+* João Lucas de Moraes Pereira
+## Desenvolvimento
+Dividimos o desenvolvimento durante 3 semanas (Conseguimos concluir o desenvolvimento em 2 semanas). São elas:
+### Semana 01 - 24/11/2023 - 01/12/2023
+* Primeiros rascunhos do código e ideias de como iniciar. Definir como funcionará a tabela e implementar os tipos estruturados e enumerados - [João L. e Vitor E.] 
+* Implementação das funções de `inserirTabela()` e `criarTabela()` - [Vitor E.]
+> É isso, FIM!
