@@ -23,7 +23,7 @@ Dividimos o desenvolvimento durante 3 semanas (Conseguimos concluir o desenvolvi
 * Implementação da função de `levenshteinDistance()` - [João L.]
 * Implementação da função de `minimum()` - [João L.]
 * Implementação da função de `sValues()` - [João L.]
-* Implementação das funções de `buscarValoresMaiores()`, `buscarValoresMaioresOuIguais(()`, `buscarValoresMaioresOuIguais(()`, `buscarValoresMaioresOuIguais(()`, `buscarValoresMaioresOuIguais()`, `buscarValoresMaioresOuIguais()` e `printRow()` - [João L.]
+* Implementação das funções de `buscarValoresMaiores()`, `buscarValoresMaioresOuIguais()`, `buscarValoresMaioresOuIguais()`, `buscarValoresMaioresOuIguais()`, `buscarValoresMaioresOuIguais()`, `buscarValoresMaioresOuIguais()` e `printRow()` - [João L.]
 ### Semana 03 - 11/12/2023 - 15/12/2023
 * Gravar a apresentação do vídeo. Segue o link da apresentação:
   
