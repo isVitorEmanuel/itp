@@ -1,6 +1,6 @@
 # Sobre o projeto
 O projeto consistia em desenvolver um banco de dados não relacional na linguagem C, utilzando todos os conceitos e assuntos abordados durante a disciplina.
-## Dicentes
+## Discentes
 * Vitor Emanuel Rodrigues de Alencar
 * João Lucas de Moraes Pereira
 ## Desenvolvimento
