@@ -26,5 +26,17 @@ Dividimos o desenvolvimento durante 3 semanas (Conseguimos concluir o desenvolvi
 * Implementação das funções de `buscarValoresMaiores()`, `buscarValoresMaioresOuIguais(()`, `buscarValoresMaioresOuIguais(()`, `buscarValoresMaioresOuIguais(()`, `buscarValoresMaioresOuIguais()`, `buscarValoresMaioresOuIguais()` e `printRow()` - [João L.]
 ### Semana 03 - 11/12/2023 - 15/12/2023
 * Gravar a apresentação do vídeo. Segue o link da apresentação:
+  
 `https://drive.google.com/drive/u/1/folders/1yQmFrCt8NkbhEns1c1d_YNOF9W710ezF`
+
+## Utilização
+1. Clone o repositório do projeto.
+2. Abre os arquivos em um ambiente com suporte à linguagem C.
+3. Abre o prompt de comando na pasta raiz do projeto e execute o seguinte comando:
+  * `mkdir tabelas`
+  > Com esse comando será criado o diretório onde serão armazenadas todas as tabelas que forem criadas!
+4. Ainda na pasta raiz do projeto, crie um arquivo executável com os seguintes comando:
+  *  `gcc main.c func.c func.h funcaux.h funcaux.c -o app.exe`
+  *  ` & .\'app.exe'`
+5. Teste à vontade!
 > É isso, FIM!
