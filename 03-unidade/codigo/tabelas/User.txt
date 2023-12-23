@@ -1,6 +1,0 @@
-User
-2 2
-ID 2
-Nome 1
-0 Vitor 
-1 Hedla 
